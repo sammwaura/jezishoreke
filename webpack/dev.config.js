@@ -1,15 +1,14 @@
-const baseConfig = require('./base.config.js');
-const DotEnv = require('dotenv');
-const {merge} = require('webpack-merge');
-const path = require('path');
+
 const webpack = require('webpack');
+const { merge } = require('webpack-merge');
+const path = require('path');
+const DotEnv = require('dotenv');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebackPlugin = require('copy-webpack-plugin');
 
+const baseConfig = require('./base.config.js');
 
-
-
-DotEnv.config({path: 'env.dev'});
+DotEnv.config({ path: '.env.dev'});
 
 module.exports = merge(baseConfig,{
     mode: 'development',
@@ -18,7 +17,7 @@ module.exports = merge(baseConfig,{
         contentBase: false,
         publicPath: '/',
         historyApiFallback: true,
-        clientLevel: 'warning',
+        clientLogLevel: 'warning',
         compress: true
     },
     plugins: [
@@ -27,13 +26,13 @@ module.exports = merge(baseConfig,{
             template: 'index.html',
             inject: true 
         }),
-        new CopyWebackPlugin([
-            {
-                from: path.resolve(__dirname, '../static'),
-                to: 'static',
-                ignore: ['*']
-            }
-        ]),
+        // new CopyWebackPlugin([
+        //     {
+        //         from: path.resolve(__dirname, '../static'),
+        //         to: 'static',
+        //         ignore: ['*']
+        //     }
+        // ]),
         new webpack.DefinePlugin({
             'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
             'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),

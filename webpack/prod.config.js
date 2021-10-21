@@ -1,3 +1,4 @@
+
 const DotEnv = require('dotenv');
 const {merge} = require('webpack-merge');
 const path = require('path');
@@ -7,9 +8,8 @@ const CopyWebackPlugin = require('copy-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin');
 const baseConfig = require('./base.config.js');
-DotEnv.config({path: 'env.prod'});
+DotEnv.config({path: '.env.prod'});
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 
@@ -50,7 +50,7 @@ module.exports = merge(baseConfig, {
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
             },
-            chunkSortMode: 'dependency'
+            chunksSortMode: 'dependency'
         }),
         new HtmlWebPackPlugin({
             filename: path.resolve(__dirname, '../dist/404.html'),
@@ -61,15 +61,15 @@ module.exports = merge(baseConfig, {
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
             },
-            chunkSortMode: 'dependency'
+            chunksSortMode: 'dependency'
         }),
-        new CopyWebackPlugin([
-            {
-                from: path.resolve(__dirname, '../static'),
-                to: 'static',
-                ignore: ['*']
-            }
-        ]),
+        // new CopyWebackPlugin([
+        //     {
+        //         from: path.resolve(__dirname, '../static'),
+        //         to: 'static',
+        //         ignore: ['*']
+        //     }
+        // ]),
         new webpack.DefinePlugin({
             'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
             'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
@@ -80,7 +80,7 @@ module.exports = merge(baseConfig, {
             'process.env.FIREBASE_APP_ID': JSON.stringify(process.env.FIREBASE_APP_ID),
         }),
         new WorkboxPlugin.GenerateSW({
-            cacheId: 'jezishoreke',
+            cacheId: 'Jezishoreke',
             swDest: 'sw.js',
             navigateFallback: '/index.html',
             navigateFallbackWhitelist: [/^\/[^\_]+\/?/],
