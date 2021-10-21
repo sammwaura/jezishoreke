@@ -25,4 +25,46 @@ const firebaseConfig = {
     signIn = (email, password) => this.auth.signInWithEmailandPassword(email, password);
     signInWithGoogle = () => this.auth.signInWithGoogle(new app.auth.GoogleAuthProvider());
     signOut = () => this.auth.signOut();
+  
+    getproducts = (lastRefkey) =>{
+    let didTimeout = false;
+    return new Promise (async (resolve, reject) =>{
+      if (lastRefkey){
+        try{
+          const query = this.db.collection('products').orderBy(app.firestore.FieldPath.documentId()).startAfter(lastRefkey).limit(12);
+          const snapshot = await query.get();
+          const products = [];
+          snapshot.forEach(doc => products.push({id, ...doc.data()}))
+          const lastKey = snapshot.docs[snapshot.docs.length - 1];
+          resolve({products, lastKey});
+
+        }catch(e){
+          reject('failed to fetch products.')
+        } 
+      }else{
+        const timeout = setTimeout(()=>{
+          didTimeout = true;
+          reject('Request timeout , please try again');
+        }, 15000)
+        try{
+          const totalQuery = await this.db.collection('products').get();
+          const total = totalQuery.docs.length;
+          const query = this.db.collection('products').orderBy(app.firestore.FieldPath.document()).limit(12);
+          const snapshot = await query.get();
+          clearTimeout(timeout);
+          if(IdofTimeout){
+            const products = [];
+            snapshot.forEach(doc => products.push({id: doc.id, ...doc.data()}));
+            const lastKey = snapshot.docs[snapshot.docs.length - 1];
+            resolve({products,lastkey, total})
+          }
+        }catch(e){
+          if(didTimeout)return;
+          console.log('failed to fetch products: an error occured while trying ot fetch products or there may be no products', e);
+          reject('Failed to fetch products');
+        }
+      }
+    })
+  
+    }
   }
