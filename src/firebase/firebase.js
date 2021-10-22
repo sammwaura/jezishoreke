@@ -67,4 +67,17 @@ const firebaseConfig = {
     })
   
     }
-  }
+    addProduct =(id, product) => this.db.collection('product').doc(id).set(product);
+    storeimage = async (id, folder, imageFile) => {
+      const snapshot = await this.storage.ref(folder).child(id).put(imageFile);
+      const downloadUrl = await snapshot.ref.getDownloadURL();
+      return downloadUrl;
+    }
+    deleteImage = id => this.storgae.ref('products').child(id).delete();
+    editProduct = (id, updates) => this.db.collections('products').doc(id).update(updates);
+    removeProduct = id => this.db.collection('products').doc(id).delete();
+    generateKey = () => this.db.collection('products').doc().id;
+
+   }
+   const firebase= new Firebase();
+   export default firebase;
