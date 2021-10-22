@@ -1,4 +1,4 @@
 export const isLoading = (bool = true) => ({
-    type: 'Loading',
+    type: 'LOADING',
     payload: bool
 });
