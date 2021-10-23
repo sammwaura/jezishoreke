@@ -1,25 +1,17 @@
 const initState = {};
 export default (state = initState, action) => {
     switch (action.type) {
-        case 'SIGN_SUCCESS':
+        case 'SIGNIN_SUCCESS':
             return {
-                loading: action.payload
+                id: action.payload.id,
+                role: action.payload.role,
+                provider: action.payload.provider
             };
 
-            case 'IS_AUTHENTICATING':
-            return {
-                isAUthenticating: action.payload
-            };
+            case 'SIGNOUT_SUCCESS':
+            return {};
     
-            case 'SET_REQUEST_STATUS':
-                return {
-                    requestStatus: action.payload
-                };
-        
-            case 'SET_AUTH_STATUS':
-                 return {
-                        authStatus: action.payload
-                };
+            
         default:
             return state;
     }
