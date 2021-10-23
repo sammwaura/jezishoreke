@@ -1,3 +1,4 @@
+
 export const setTextFilter = keyword => ({
     type: 'SET_TEXT_FILTER',
     payload: keyword

@@ -11,6 +11,11 @@ export const getUser = uid => ({
     
 });
 
+export const addUser = user => ({
+    type: 'ADD_USER',
+    payload: user
+    
+});
 export const editUser = updates => ({
     type: 'EDIT_USER',
     payload: updates
