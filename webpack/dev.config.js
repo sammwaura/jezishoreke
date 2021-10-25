@@ -14,11 +14,12 @@ module.exports = merge(baseConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: false,
-    publicPath: '/',
+    static: {
+      directory: path.join(__dirname, './dist')
+    },
+    compress: true,
     historyApiFallback: true,
-    clientLogLevel: 'warning',
-    compress: true
+  
   },
   plugins: [
     new HtmlWebpackPlugin({
