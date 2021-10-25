@@ -3,7 +3,7 @@ import { Route, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Basket from 'componets/basket/Basket';
-import Navigation from 'component/basket/Navigation';
+import Navigation from 'component/ui/Navigation';
 import Footer from 'components/ui/Footer';
 const PrivateRoute = ({isAuth, userType, component: Component, path, ...rest})=>(
     <Route 

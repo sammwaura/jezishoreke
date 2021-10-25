@@ -1,14 +1,18 @@
-import React from 'react';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import AppRouter from 'routers/AppRouter';
+import PreLoader from 'components/ui/PreLoader';
+import React, {StrictMode} from 'react';
 
-function App(){
-    return(
-        <div>
-            <h2>
-                Karibu JeziShore Online Store!
-            </h2>
-        </div>
-    );
+const App = ({ store, persistor}) => (
+<StrictMode>
+    <Provider store={store}>
+        <PersistGate loading={<PreLoader/>} persistor={persistor}>
+            <AppRouter/>
+        </PersistGate>
+    </Provider>
+</StrictMode>
 
-}
+)
 
 export default App;

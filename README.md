@@ -1,6 +1,6 @@
 # ECOMMERCE JEZI PLATFORM
 
-This project was developed using ReactJs).
+This is an Ecommerce Website Application developed using React Javascript and Redux.
 
 
 # jezishoreke

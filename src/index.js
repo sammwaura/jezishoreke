@@ -8,6 +8,7 @@ import firebase from './firebase/firebase';
 import {onAuthStateSuccess, onAuthStateFail} from 'actions/authActions';
 import configureStore from 'store/store';
 import PreLoader from 'components/ui/PreLoader';
+import 'styles/styles.scss';
 
 WebFont.load({
   google:{
