@@ -16,6 +16,7 @@ import AddProduct from 'views/admin/add_product';
 import ProductSearch from 'components/product/ProductSearch';
 import SignUp from 'views/auth/signup';
 import SignIn from 'views/auth/signin';
+import ForgotPassword from 'views/auth/forgot_password';
 import UserAccount from 'views/account/user_account';
 import EditAccount from 'views/account/edit_account';
 import Home from 'views/home';
@@ -42,6 +43,10 @@ const AppRouter = () =>(
             <PublicRoute
             component={ScrollToTop(SignUp)}
             path="/signup"
+            />
+            <PublicRoute
+            component={ScrollToTop(ForgotPassword)}
+            path="/forgot_password"
             />
             <PublicRoute
             component={ScrollToTop(SignIn)}
