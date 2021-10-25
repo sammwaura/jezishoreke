@@ -8,7 +8,7 @@ import SearchBar from './SearchBar';
 import FiltersToggle from './FiltersToggle';
 import MobileNavigation from './MobileNavigation';
 
-import logo from '../../../static/projectlogo.png';
+import logo from '../../../static/logo.png';
 
 
 const Navigation = ({ isAuth, path, history }) => {

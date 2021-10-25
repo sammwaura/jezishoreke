@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Basket from 'componets/basket/Basket';
-import Navigation from 'component/ui/Navigation';
+import Basket from 'components/basket/Basket';
+import Navigation from 'components/ui/Navigation';
 import Footer from 'components/ui/Footer';
 
 const PublicRoute = ({userType, isAuth, component: Component, path, ...rest})=>(

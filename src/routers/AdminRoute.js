@@ -10,8 +10,8 @@ import AdminSidePanel from 'components/ui/AdminSidePanel';
 const AdmninRoute = ({component: Component, ...rest}) =>{
     const isAuth = useSelector(state => !!state.auth.id && state.auth.role === "ADMIN");
     return(
-        <Route>
-            {...rest}
+        <Route  
+         {...rest}
         component = {props =>(
             isAuth ? (
                 <>
@@ -26,7 +26,8 @@ const AdmninRoute = ({component: Component, ...rest}) =>{
                     
                 </>
             ): <Redirect to="/"/>
-        )}
+        )}>
+          
          </Route>
 
     );

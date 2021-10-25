@@ -13,7 +13,7 @@ import {
 } from 'constants/constants';
 
 import { 
-  getProductsSuccess, 
+  getProductSuccess, 
   addProductSuccess, 
   editProductSuccess,
   removeProductSuccess 
@@ -47,7 +47,7 @@ function* productSaga({ type, payload }) {
         const state = yield select();
         const result = yield call(firebase.getProducts, payload);
     
-        yield put(getProductsSuccess({ 
+        yield put(getProductSuccess({ 
           products: result.products, 
           lastKey: result.lastKey ? result.lastKey : state.products.lastRefKey,
           total: result.total ? result.total : state.products.total

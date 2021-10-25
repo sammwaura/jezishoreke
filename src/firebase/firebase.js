@@ -1,6 +1,6 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebse/firestore';
+import app from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 import 'firebase/storage';
 
 
@@ -25,6 +25,9 @@ const firebaseConfig = {
     signIn = (email, password) => this.auth.signInWithEmailandPassword(email, password);
     signInWithGoogle = () => this.auth.signInWithGoogle(new app.auth.GoogleAuthProvider());
     signOut = () => this.auth.signOut();
+    // passwordReset = email => this.auth.sendPasswordResetEmail(email);
+      addUser = (id, user) => {this.db.collection('users').doc(id).set(user)};
+      getUser = id => {this.db.collection('users').doc(id).get()}
   
     getproducts = (lastRefkey) =>{
     let didTimeout = false;

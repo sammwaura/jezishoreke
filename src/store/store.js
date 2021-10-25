@@ -1,8 +1,8 @@
 import {
-    createStrore,
+    createStore,
     applyMiddleware,
 } from 'redux';
-import {composewithDevTools} from 'redux-devtools-extension';
+import {composeWithDevTools} from 'redux-devtools-extension';
 import {persistStore, persistCombineReducers} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createSagaMiddleware from 'redux-saga'
@@ -14,13 +14,13 @@ const sagaMiddleware =  createSagaMiddleware();
 const authPersistConfig = {
     key: 'root',
     storage,
-    whiteList= ['auth', 'profile', 'basket', 'checkout']
+    whitelist: ['auth', 'profile', 'basket', 'checkout']
 }
 
 export default () => {
-    const store = createStrore(
+    const store = createStore(
         persistCombineReducers(authPersistConfig, rootReducer),
-        composewithDevTools(applyMiddleware(sagaMiddleware))
+        composeWithDevTools(applyMiddleware(sagaMiddleware))
 
     );
 

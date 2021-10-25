@@ -7,7 +7,7 @@ export const signIn = (email, password) =>({
     }
 });
 
-export const signInWIthGoogle = () => ({
+export const signInWithGoogle = () => ({
     type: 'SIGNIN_WITH_GOOGLE'
 });
 

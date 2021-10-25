@@ -26,7 +26,7 @@ import {
 import { clearBasket } from 'actions/basketActions';
 import { setProfile, clearProfile } from 'actions/profileActions';
 import { resetFilter } from 'actions/filterActions';
-import { resetCheckout } from 'actions/checkoutActions';
+import { resetCheckOut } from 'actions/checkOutActions';
 
 import defaultAvatar from 'images/defaultAvatar.jpg';
 import defaultBanner from 'images/defaultBanner.jpg';
@@ -127,7 +127,7 @@ function* authSaga({ type, payload }) {
         yield put(clearBasket());
         yield put(clearProfile());
         yield put(resetFilter());
-        yield put(resetCheckout());
+        yield put(resetCheckOut());
         yield put(signOutSuccess());
         yield put(isAuthenticating(false));
         yield call(history.push, '/signin');
