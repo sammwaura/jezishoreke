@@ -45,3 +45,10 @@ const BasketItem = ({ basket, dispatch, product }) => {
     </div>
   );
 };
+
+BasketItem.propType = {
+  product: PropTypes.object.isRequired,
+  basket: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+export default BasketItem;
