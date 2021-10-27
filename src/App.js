@@ -3,6 +3,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import AppRouter from 'routers/AppRouter';
 import PreLoader from 'components/ui/PreLoader';
 import React, {StrictMode} from 'react';
+import firebase from './firebase/firebase';
 
 const App = ({ store, persistor}) => (
 <StrictMode>

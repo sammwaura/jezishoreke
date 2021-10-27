@@ -29,7 +29,7 @@ const firebaseConfig = {
       addUser = (id, user) => {this.db.collection('users').doc(id).set(user)};
       getUser = id => {this.db.collection('users').doc(id).get()}
   
-    getproducts = (lastRefkey) =>{
+    getproducts = (lastRefkey) => {
     let didTimeout = false;
     return new Promise (async (resolve, reject) =>{
       if (lastRefkey){
@@ -84,4 +84,3 @@ const firebaseConfig = {
    }
    const firebase= new Firebase();
    export default firebase;
- 
