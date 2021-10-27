@@ -8,8 +8,9 @@ const UserOrdersTab = () =>{
     const [product, setProduct] = useState([]);
     const [priceproduct, setPrice] = useState([]);
     const profile = useSelector(state => state.profile);
+    
 
-    userOrders = () => {
+const userOrders = () => {
         const orders =[];
         const userProducts = [];
         const price = [];
