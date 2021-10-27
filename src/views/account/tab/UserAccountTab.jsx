@@ -46,7 +46,18 @@ const UserProfile = (props) =>{
                     )}
                     <span>Mobile</span>
                     <br/>
-                    <h5>{profile.mobile.data.num ? profile.mobile.data.num : '+254 '}</h5>
+                    {profile.mobile.data ? (
+                        <h5>{profile.mobile.data.num ? profile.mobile.data.num : '+254 '}</h5>
+                        ) : (
+                            <h5 className="text-subtle text-italic">Mobile not Set </h5>
+                    )}
+                    <span> Date Joined </span>
+                    <br/>
+                    {profile.dateJoined ? (
+                        <h5>{displayDate(profile.date.dateJoined)}</h5>
+                    ):(
+                        <h5 className="text-subtle text-italic">Not Available</h5>
+                    )}
                 </div>
             </div>
         </div>
