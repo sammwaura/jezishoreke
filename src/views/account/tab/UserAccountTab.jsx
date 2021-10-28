@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import {withRouter} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import {displayDate} from 'helpers/utils';
 import {ACCOUNT_EDIT} from 'constants/routes';
 import ImageLoader from 'components/ui/ImageLoader';

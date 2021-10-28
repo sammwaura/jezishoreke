@@ -17,7 +17,7 @@ const ShowOrders = (props) => {
                             )}</h5>
                     </div>
                     <div className="product-form-fieldproductname">
-                        <h2 style={{color: "red", marginTop= "0px", backgroundColor:"orange"}}>Price</h2>
+                        <h2 style={{color: "red", marginTop: "0px", backgroundColor:"orange"}}>Price</h2>
                         <h5>{props.price.map(item=>
                             <div>
                                 <p>
