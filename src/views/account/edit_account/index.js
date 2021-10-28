@@ -43,6 +43,70 @@ const EditProfile = (props) =>{
         onFileChange
     } = useFileHandler({ avatar: {}, banner: {} });
 
+
+    const onFullNameChange = (e, value, error) =>{
+        setField({ ...field, fullname:{value, error}});
+    };
+    const onAddressChange = (e, value, error) =>{
+        setField({ ...field, address:{value, error}});
+    };
+    const onMobileChange = (value, data) =>{
+        const obj = {
+            dialCode: data.dialCode,
+            countryCode: data.countryCode,
+            num: value
+        };
+        setField({
+            ...field,
+            mobile: {
+                value: value.replace(/[^0-9/]+/g,'').slice(data.dialCode.length),
+                data: obj
+            }
+        });
+    };
+
+    const areFieldsChanged = () =>{
+        const fieldsChanged = Object.keys(field).some((key) => {
+            if(typeof profile[key] === 'object' && typeof field[key] === 'object'){
+                return profile[key].value !== field[key].value;
+            } else if (typeof field[key] === 'object'){
+                return field[key].value !== profile[key];
+            } else{
+                return field[key] !== profile[key];
+            }
+        });
+        const filesUpdated = imageFile.banner.file || imageFile.avatar.file;
+
+        return fieldsChanged || filesUpdated;
+     };
+
+     const update = (credentials = {}) => {
+         dispatch(updateProfile({
+             updates:{
+                 fullname: field.fullname.value,
+                 email: field.email.value,
+                 address: field.address.value,
+                 mobile: field.mobile.value,
+                 avatar: field.avatar.value,
+                 banner: field.banner.value,
+             },
+             files:{
+                 bannerFile: imageFile.banner.file,
+                 avatarFile: imageFile.avatar.file
+             },
+             credentials
+         }))
+     };
+
+     const onSubmitUpdate = () =>{
+         const noError = Object.keys(field).every(key => !!!field[key].error);
+         if(noError){
+             if(areFieldsChanged()){
+                 update();
+             }
+         }
+     };
+
     return(
         <Boundary>
             <div className="edit-user">
